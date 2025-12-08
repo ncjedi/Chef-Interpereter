@@ -365,12 +365,12 @@ int KeyWordType(string line, Ingredients ingri, vector<string>& IngriPosition, v
 		}
 		else if (check == "Divide")
 		{
-			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "Ingri"} }, verbs))
+			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "Ingri"}, {false, "into"}, {false, "the"}, {false, "Bnum"}, {false, "mixing bowl"} }, verbs))
 				return 6;
 		}
 		else if (check == "Liquefy")
 		{
-			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "dry"}, {true, "ingri"}, {true, "from"}, {false, "the"}, {true, "refrigerator"} }, verbs))
+			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "ingri"} }, verbs))
 				return 7;
 
 			else if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "contents of the"}, {false, "Bnum"}, {true, "mixing bowl"} }, verbs))
@@ -1151,7 +1151,7 @@ void InterpretMethod(vector<string> methodCode, int lineNum, vector<vector<Ingre
 
 	if (!DoMethod(methodCode, lines, mixingBowls, bakingDishes, ingredients, lineNum, keyWord, bowlPosition, dishPosition, ingriPosition, verbs, ref))
 	{
-		ThrowError(13);
+		ThrowError(13,lineNum);
 	}
 
 	//bakingDishes[0].push_back(ingredients["sugar"]);
