@@ -197,6 +197,7 @@ bool CheckIfMethod(string line, Ingredients ingri, vector<string>& IngriPosition
 
 	for (auto check : checks)
 	{
+		std::cout << check.first << " " << check.second << "\n";
 		if (check.second == "Ingri")
 		{
 			contains = CheckContainIngredient(i, line, ingriStr, ingri);
@@ -229,6 +230,7 @@ bool CheckIfMethod(string line, Ingredients ingri, vector<string>& IngriPosition
 
 		if (!contains && check.first)
 		{
+			std::cout << "DYING HERE\n";
 			return false;
 		}
 
@@ -244,6 +246,7 @@ bool CheckIfMethod(string line, Ingredients ingri, vector<string>& IngriPosition
 	bowlPosition.push_back(stoi(bowlNumStr));
 	dishPosition.push_back(stoi(dishNumStr));
 	verbs.push_back(numberStr);
+	return true;
 }
 
 string RemoveEDVerb(string verb)
@@ -330,6 +333,8 @@ int KeyWordType(string line, Ingredients ingri, vector<string>& IngriPosition, v
 			check += c;
 		}
 
+		std::cout << check << " ";
+
 		if (check == "Take")
 		{
 			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "Ingri"}, {true, "from"}, {false, "the"}, {true, "refrigerator"}}, verbs))
@@ -337,8 +342,12 @@ int KeyWordType(string line, Ingredients ingri, vector<string>& IngriPosition, v
 		}
 		else if (check == "Put")
 		{
-			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "Ingri"}, {true, "into"},{false, "the"}, {false, "Bnum"}, {true, "mixing bowl"}}, verbs))
+			std::cout << "BOO\n";
+			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "Ingri"}, {true, "into"},{false, "the"}, {false, "Bnum"}, {true, "mixing bowl"} }, verbs))
+			{
+				std::cout << "BOO2\n";
 				return 1;
+			}
 		}
 		else if (check == "Fold")
 		{
