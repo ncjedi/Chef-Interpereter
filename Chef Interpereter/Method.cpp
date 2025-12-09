@@ -197,7 +197,7 @@ bool CheckIfMethod(string line, Ingredients ingri, vector<string>& IngriPosition
 
 	for (auto check : checks)
 	{
-		std::cout << check.first << " " << check.second << "\n";
+		//std::cout << check.first << " " << check.second << "\n";
 		if (check.second == "Ingri")
 		{
 			contains = CheckContainIngredient(i, line, ingriStr, ingri);
@@ -230,7 +230,7 @@ bool CheckIfMethod(string line, Ingredients ingri, vector<string>& IngriPosition
 
 		if (!contains && check.first)
 		{
-			std::cout << "DYING HERE\n";
+			//std::cout << "DYING HERE\n";
 			return false;
 		}
 
@@ -333,7 +333,7 @@ int KeyWordType(string line, Ingredients ingri, vector<string>& IngriPosition, v
 			check += c;
 		}
 
-		std::cout << check << " ";
+		//std::cout << check << " ";
 
 		if (check == "Take")
 		{
@@ -342,10 +342,10 @@ int KeyWordType(string line, Ingredients ingri, vector<string>& IngriPosition, v
 		}
 		else if (check == "Put")
 		{
-			std::cout << "BOO\n";
+			//std::cout << "BOO\n";
 			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "Ingri"}, {true, "into"},{false, "the"}, {false, "Bnum"}, {true, "mixing bowl"} }, verbs))
 			{
-				std::cout << "BOO2\n";
+				//std::cout << "BOO2\n";
 				return 1;
 			}
 		}
