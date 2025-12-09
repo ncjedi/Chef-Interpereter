@@ -200,6 +200,7 @@ bool CheckIfMethod(string line, Ingredients ingri, vector<string>& IngriPosition
 		//std::cout << check.first << " " << check.second << "\n";
 		if (check.second == "Ingri")
 		{
+			//std::cout << "IN";
 			contains = CheckContainIngredient(i, line, ingriStr, ingri);
 		}
 
@@ -379,7 +380,7 @@ int KeyWordType(string line, Ingredients ingri, vector<string>& IngriPosition, v
 		}
 		else if (check == "Liquefy")
 		{
-			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "ingri"} }, verbs))
+			if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "Ingri"} }, verbs))
 				return 7;
 
 			else if (CheckIfMethod(line, ingri, IngriPosition, bowlPosition, dishPosition, pos, currentLinePos, lineNum, { {false, "the"}, {true, "contents of the"}, {false, "Bnum"}, {true, "mixing bowl"} }, verbs))
